@@ -1,0 +1,23 @@
+elasticsearch:
+    image: digitalwonderland/elasticsearch
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+logstash:
+    image: digitalwonderland/logstash
+    ports:
+        - "5043:5043"
+    volumes:
+        - "./logstash.conf:/etc/confd/templates/logstash.conf.tmpl:ro"
+    links:
+        - elasticsearch:elasticsearch
+logstash-forwarder:
+    image: nuthman/logstash-forwarder
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /var/lib/docker:/var/lib/docker:ro
+    links:
+        - logstash:logstash
+    volumes_from:
+        - logstash
+    command: "-debug=true"
