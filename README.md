@@ -6,9 +6,12 @@ To make your logback logging java application log as json, check out https://git
 
 ## External logging setup
 For logging from external applications to the ELK-stack, 
+
 1. setup logstash-forwarder (https://github.com/elastic/logstash-forwarder) on the nodes you want to log from to log to port 5043 on the machine with the elk stack.
 2. Create a lumberjack.crt and lumberjack_ca.crt and key which you add to the logstash docker container through docker-logstash-forwarder.yml through the volume part(check docker-logstash-forwarder.yml and logstash.conf) and in the logstash-forwarder.conf on the logging machines.
-3. Add a static field "parseas" to "json"  in order for the message part of your log files to be parsed as json in your logstash-forwarder.conf on the external nodes you want to log from. Example:
+3. Add a static field "parseas" to "json"  in order for the message part of your log files to be parsed as json in your logstash-forwarder.conf on the external nodes you want to log from. 
+
+Example:
 ```
 {                                                                                                                                                                                             
     "network":{                                                                                                                                                                               
