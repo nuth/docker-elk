@@ -9,8 +9,8 @@ You can externally log to the ELK stack either using the logstash forwarder or u
 
 ### Using the Logstash TCP appender
 This approach is only viable on a Java application that uses logback.
-
 Add this appender to the logback.xml configuration (note this is insecure):
+
 ---
 ```xml
 <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
