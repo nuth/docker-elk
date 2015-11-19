@@ -59,7 +59,7 @@ Example:
 ```
 
 ## Kibana
-To log into kibana, go to 127.0.0.1:9200/_plugin/kibana3 on the machine you deployed your elk stack.
+To log into kibana, go to 127.0.0.1:5601 on the machine you deployed your elk stack.
 
 ## Bugs/Readme
 There are a few known bugs and the elasticsearch and kibana version are outdated.
