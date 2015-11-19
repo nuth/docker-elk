@@ -7,7 +7,7 @@ logstash:
     image: digitalwonderland/logstash
     ports:
         - "5043:5043"
-        - "8091:8091"
+        - "8300:8300"
     volumes:
         - "./logstash.conf:/etc/confd/templates/logstash.conf.tmpl:ro"
     links:

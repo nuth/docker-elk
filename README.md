@@ -14,7 +14,7 @@ Add this appender to the logback.xml configuration (note this is insecure):
 ---
 ```xml
 <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-    <destination>10.243.200.51:8091</destination>
+    <destination>10.243.200.51:8300</destination>
 
     <!-- encoder is required -->
     <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
