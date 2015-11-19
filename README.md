@@ -12,6 +12,7 @@ This approach is only viable on a Java application that uses logback.
 
 Add this appender to the logback.xml configuration (note this is insecure):
 ---
+```xml
 <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
     <destination>10.243.200.51:8091</destination>
 
@@ -25,6 +26,7 @@ Add this appender to the logback.xml configuration (note this is insecure):
     <!-- other appenders you might have here -->
     <appender-ref ref="stash"/>
 </root>
+```
 ---
 
 ### Using the Logstash forwarder
