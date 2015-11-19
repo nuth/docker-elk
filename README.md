@@ -5,6 +5,30 @@ Docker-compose for setting up a elk-stack, with automatic logging from docker co
 To make your logback logging java application log as json, check out https://github.com/logstash/logstash-logback-encoder
 
 ## External logging setup
+You can externally log to the ELK stack either using the logstash forwarder or using directly using a logtash tcp appender.
+
+### Using the Logstash TCP appender
+This approach is only viable on a Java application that uses logback.
+
+Add this appender to the logback.xml configuration (note this is insecure):
+---
+<appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <destination>10.243.200.51:8091</destination>
+
+    <!-- encoder is required -->
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+</appender>
+
+<!-- ... -->
+
+<root level="INFO">
+    <!-- other appenders you might have here -->
+    <appender-ref ref="stash"/>
+</root>
+---
+
+### Using the Logstash forwarder
+
 For logging from external applications to the ELK-stack, 
 
 1. setup logstash-forwarder (https://github.com/elastic/logstash-forwarder) on the nodes you want to log from to log to port 5043 on the machine with the elk stack.
