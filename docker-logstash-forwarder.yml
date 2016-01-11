@@ -1,12 +1,13 @@
 elasticsearch:
-    image: digitalwonderland/elasticsearch
+    image: nshou/elasticsearch-kibana
     ports:
         - "9200:9200"
-        - "9300:9300"
+        - "5601:5601"
 logstash:
     image: digitalwonderland/logstash
     ports:
         - "5043:5043"
+        - "8300:8300"
     volumes:
         - "./logstash.conf:/etc/confd/templates/logstash.conf.tmpl:ro"
     links:
